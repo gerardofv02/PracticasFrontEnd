@@ -24,7 +24,9 @@ h2{
 
 section{
     height: 75%;
+    
 }
+
 #pelota{
     width: 30px;
     height: 30px;
@@ -36,19 +38,13 @@ section{
     top: 80%;
     left:50%;
 }
-.azul{
-    position: absolute;
-    width: 90px;
-    height: 3px;
-    padding: 5px;
-    background-color: #009;
-
-}
-.verde{
-    position: absolute;
-    width: 90px;
-    height: 3px;
-    padding: 5px;
-    background-color: #090;
-
+#bloque{
+    border: 0 solid;
+    background-color: transparent;
+    width: 60px;
+    height: 40px;
+    position: relative;
+    top: 5rem;
+    left: 8rem;
+    box-sizing: border-box;
 }
