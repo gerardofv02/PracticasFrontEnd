@@ -1,0 +1,54 @@
+body{
+    background-color: #000;
+}
+
+
+#barra{
+    position: absolute;
+    width: 150px;
+    height: 20px;
+    background-color: white;
+    padding: 0;
+    left:47%;
+
+    
+}
+h1{
+    color:aqua;
+    text-align: center;
+}
+h2{
+    color:green;
+    text-align: center;
+}
+
+section{
+    height: 75%;
+}
+#pelota{
+    width: 30px;
+    height: 30px;
+    background-color: #fabada;
+    border-radius: 50%;
+    border-color: black;
+    position: absolute;
+    border-style: solid;
+    top: 80%;
+    left:50%;
+}
+.azul{
+    position: absolute;
+    width: 90px;
+    height: 3px;
+    padding: 5px;
+    background-color: #009;
+
+}
+.verde{
+    position: absolute;
+    width: 90px;
+    height: 3px;
+    padding: 5px;
+    background-color: #090;
+
+}
