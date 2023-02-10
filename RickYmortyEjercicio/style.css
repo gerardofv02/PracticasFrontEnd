@@ -1,5 +1,6 @@
 body{
     margin:0;
+    
 
 }
 
@@ -24,13 +25,19 @@ body{
 }
 
 h1{
-    color:green;
+    color:aqua;
     text-align: center;
     background-color: gray;
     padding: 3rem 2rem;
 }
 div{
+    display: flex;
     flex-flow: row wrap;
+    padding:3px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
 }
 
 

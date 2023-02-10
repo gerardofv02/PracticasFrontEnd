@@ -6,13 +6,26 @@
     <title>RickyMorty</title>
     <h1> Caracteres de Rick y Morty</h1>
 </head>
-<body onload="fetchChars(2)">
+<body onload="fetchCharsp()">
     <button id="anterior" onclick="anterior()"> Pagina anterior</button>
     <button id="siguiente" onclick="siguiente()">Pagina siguiente</button>
-    <label for="page">pagina</label>
-    <input  type="text" id="page" name="page" placeholder="page" />
+    <!--     <form  onsubmit="getPage()">
+        Enter page: <input id="page" type="text" name="page">
+        <input type="submit" value="Submit">
+      </form>
+    -->
+    <label for="page" >Pagina</label>
+    <input  type="text" id="page" name="page" placeholder="page" onsubmit="getPages()" />
+    <button onclick="getPage()">Buscar</button>
     <label for="nombre">Nombre</label>
     <input  type="text" id="nombre" name="nombre" placeholder="nombre" />
+    <button onclick="getName()">Buscar</button>
+
+    <label for="page" >Pagina</label>
+    <input  type="text" id="p_n" name="page" placeholder="page" onsubmit="getPages()" />
+    <label for="nombre">Nombre</label>
+    <input  type="text" id="n_p" name="nombre" placeholder="nombre" />
+    <button onclick="getNamee()">Buscar</button>
 
     <div id="results" ></div>
     
