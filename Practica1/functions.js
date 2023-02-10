@@ -8,6 +8,10 @@ var bloquePadding = 20;
 var bloqueOffsetTop = 100;
 var bloqueOffsetLeft = 55;
 var bloqueColumnCount = window.innerWidth%bloqueWidth/2.7 ;
+var cont = 0;
+var temp;
+var comenzar = false;
+var destruccion = false;
 
 function detectKey(e){
     var barra = document.getElementById("barra");
@@ -30,6 +34,14 @@ function detectKey(e){
     }
 }
 function move(){
+
+        var mysong = document.getElementById("cancion");
+
+        mysong.play();
+
+
+    console.log(cont);
+    console.log(bloqueColumnCount*bloqueRowCount);
     var comienzo = document.getElementById("comienzo");
     var pelota = document.getElementById("pelota");
     var barra = document.getElementById("barra");
@@ -49,7 +61,11 @@ function move(){
             y = false
         }
         if(pelota.getBoundingClientRect().bottom > window.innerHeight -10){
-            window.location.reload();
+            clearTimeout(temp);
+            window.alert("Has perdido :(");
+           window.location.reload();
+
+
         }
         
 
@@ -63,7 +79,7 @@ function move(){
     }
     if(x == true){
         pelota.style.left= (10 + left) + "px";
-        if(left > window.innerWidth-55){
+        if(left > window.innerWidth-pelota.style.width - 55){
             x = false;
 
         }
@@ -78,8 +94,13 @@ function move(){
         
     }
     setTimeout(colisionBloque,10);
+    temp = setTimeout(move,60);
 
-    setTimeout(move,60);
+
+    if(cont > bloqueColumnCount*bloqueRowCount -1){
+        window.alert("Has ganado! :)");
+        window.location.reload();
+    }
 
     
 
@@ -121,10 +142,13 @@ window.onload = function crearBloques(){
 
 function colisionBloque(){
     var pelota = document.getElementById("pelota");
+    var mysongg = document.getElementById("destruir");
+
 
     for (var c = 0; c < bloqueColumnCount; c++) {
         for (var r = 0; r < bloqueRowCount; r++) {
             var bloque = document.getElementById("bloque" + r + c);
+            //abajo
 
             if (pelota.getBoundingClientRect().top < bloque.getBoundingClientRect().top + bloque.getBoundingClientRect().height &&
             pelota.getBoundingClientRect().top + pelota.getBoundingClientRect().height > bloque.getBoundingClientRect().top &&
@@ -132,14 +156,60 @@ function colisionBloque(){
             pelota.getBoundingClientRect().left + pelota.getBoundingClientRect().width > bloque.getBoundingClientRect().left) {
                 bloque.style.display = "none";
                 y = true;
-            }
+                cont = cont +1;
+                destruccion = true;
+                if(destruccion == true){
+                    mysongg.play();
+                    destruccion = false;
+                }
 
-            if (pelota.getBoundingClientRect().top > bloque.getBoundingClientRect().top + bloque.getBoundingClientRect().height &&
-            pelota.getBoundingClientRect().top + pelota.getBoundingClientRect().height < bloque.getBoundingClientRect().top &&
-            pelota.getBoundingClientRect().left > bloque.getBoundingClientRect().left + bloque.getBoundingClientRect().width &&
-            pelota.getBoundingClientRect().left + pelota.getBoundingClientRect().width < bloque.getBoundingClientRect().left) {
+            }
+            //arriba
+
+            if (pelota.getBoundingClientRect().bottom < bloque.getBoundingClientRect().bottom + bloque.getBoundingClientRect().height &&
+            pelota.getBoundingClientRect().bottom + pelota.getBoundingClientRect().height > bloque.getBoundingClientRect().bottom &&
+            pelota.getBoundingClientRect().left < bloque.getBoundingClientRect().left + bloque.getBoundingClientRect().width &&
+            pelota.getBoundingClientRect().left + pelota.getBoundingClientRect().width > bloque.getBoundingClientRect().left)  {
                 bloque.style.display = "none";
                 y = false;
+                cont = cont +1;
+                destruccion = true;
+                if(destruccion == true){
+                    mysongg.play();
+                    destruccion = false;
+                }
+
+            }
+            //izq
+
+            if (pelota.getBoundingClientRect().left < bloque.getBoundingClientRect().left + bloque.getBoundingClientRect().width &&
+            pelota.getBoundingClientRect().left + pelota.getBoundingClientRect().width > bloque.getBoundingClientRect().left &&
+            pelota.getBoundingClientRect().top < bloque.getBoundingClientRect().top + bloque.getBoundingClientRect().height &&
+            pelota.getBoundingClientRect().top + pelota.getBoundingClientRect().height > bloque.getBoundingClientRect().top) {
+                bloque.style.display = "none";
+                x = false;
+                cont = cont +1;
+                destruccion = true;
+                if(destruccion == true){
+                    mysongg.play();
+                    destruccion = false;
+                }
+
+            }
+            //derecha
+            if (pelota.getBoundingClientRect().right < bloque.getBoundingClientRect().right + bloque.getBoundingClientRect().width &&
+            pelota.getBoundingClientRect().right + pelota.getBoundingClientRect().width > bloque.getBoundingClientRect().right &&
+            pelota.getBoundingClientRect().top < bloque.getBoundingClientRect().top + bloque.getBoundingClientRect().height &&
+            pelota.getBoundingClientRect().top + pelota.getBoundingClientRect().height > bloque.getBoundingClientRect().top) {
+                bloque.style.display = "none";
+                x = true;
+                cont = cont +1;
+                destruccion = true;
+                if(destruccion == true){
+                    mysongg.play();
+                    destruccion = false;
+                }
+
             }
         }
     }
