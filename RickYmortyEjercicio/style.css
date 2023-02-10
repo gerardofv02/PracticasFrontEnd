@@ -1,0 +1,38 @@
+body{
+    margin:0;
+
+}
+
+#anterior{
+    background-color: gray;
+    width: 100px;
+    height: 40px;
+    color:aqua;
+    margin: 3px;
+
+
+
+}
+#siguiente{
+    background-color: gray;
+    width: 100px;
+    height: 40px;
+    color:aqua; 
+    margin: 3px;
+
+
+}
+
+h1{
+    color:green;
+    text-align: center;
+    background-color: gray;
+    padding: 3rem 2rem;
+}
+div{
+    flex-flow: row wrap;
+}
+
+
+
+
