@@ -5,6 +5,12 @@ import { Container, Row, Col } from "react-grid-system";
 const Tabla = () =>{
     return(
 <>  
+<form>
+   Introduce nombre : <input type="string" className="nombre"/> <br/>
+   Introduce DNI : <input type="string" className="dni"/> <br/>
+   <button >Añadir</button>
+   </form>
+    <div className="contenedor">
    <Container>
         <Row>
              <Col>
@@ -15,12 +21,10 @@ const Tabla = () =>{
              </Col>
         </Row>
    </Container>
+   </div>
 
-   <footer>
-   Introduce nombre : <input type="string"/> <br/>
-   Introduce DNI : <input type="string"/> <br/>
 
-   </footer>
+
             
         
 </>
