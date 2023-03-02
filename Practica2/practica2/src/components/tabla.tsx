@@ -1,48 +1,62 @@
-import { Eliminar, Formulario, Primero, Segundo } from "@/styles/styledComponents";
+import {  Formulario, Arriba, Abajo } from "@/styles/styledComponents";
 import { useState } from "react";
-
+type fila = {
+    nombre: string,
+    dni: string,
+}
 
 const Tabla = () =>{
     const[nombre , setNombre] = useState<string>("")
     const[dni, setDni] = useState<string>("")
-    
-    type fila = {
-        nombre: string,
-        dni: string,
-    };
 
-    const[nombres, setNombres] = useState<string[]>([])
-    const[dnis, setDnis] = useState<string[]>([])
+    const[filaa,setFila] = useState<fila[]>([])
     
 
     function addComponent(){
-        nombres.push(nombre);
-       setNombres(nombres);
-        dnis.push(dni);
-        setDnis(dnis);
-
-        console.log(nombres,dnis);
+        setFila([...filaa,{
+            nombre:nombre,
+            dni:dni,
+        }])
+        setNombre("");
+        setDni("");
+        console.log(filaa);
                 
 
     
     }
+    function eliminar(index : number){
+        const filas = filaa.filter((element,i) => i !== index);
+        setFila(filas);
+        console.log(filas);
+
+    }
+
 
     
     return (
         <div >
         
-           Introduce nombre : <input type="string" onChange={(e) => setNombre(e.target.value)}/> <br/>
-           Introduce DNI : <input type="string" onChange={(e) => setDni(e.target.value)}/> <br/>
-           <button onClick={addComponent}>Añadir</button> <br/>
+           Introduce nombre : <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)}/> <br/>
+           Introduce DNI : <input type="text" value={dni} onChange={(e) => setDni(e.target.value)}/> <br/>
+           <button  onClick={addComponent}>Añadir</button> <br/>
 
 
         
         <Formulario>
-            <Primero>Nombre</Primero>
-            <Segundo>DNI</Segundo>
-            <Eliminar>Eliminar</Eliminar>
-            <Primero>{nombres}</Primero>
-            <Segundo>{dnis}</Segundo>
+            <Arriba>Nombre</Arriba>
+            <Arriba>DNI</Arriba>
+            <Arriba>Eliminar</Arriba>
+            
+                {filaa.map((element,index) => {
+                    return(
+                    <>
+                    <Abajo>{element.nombre}</Abajo>
+                    <Abajo>{element.dni}</Abajo>
+                    <button onClick={ () => eliminar(index)}>Eliminar</button>
+                    </>
+                    )
+                })}
+                
         </Formulario>
 
         </div>
