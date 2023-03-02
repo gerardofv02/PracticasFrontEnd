@@ -1,23 +1,37 @@
 import { Eliminar, Formulario, Primero, Segundo } from "@/styles/styledComponents";
 import { useState } from "react";
-
+const dnis : string[] = [];
+const nombres: string[] = [];
 const Tabla = () =>{
     const[nombre , setNombre] = useState<string>("")
     const[dni, setDni] = useState<string>("")
+    /*
     type fila = {
         nombre: string,
         dni: string,
     };
+    */
+
     function addComponent(){
-        let fila : fila;
+        /*let fila : fila;
         fila = {
             nombre : nombre,
             dni : dni
         }
+        filas.push(fila);
+        setFila(filas);
         console.log(fila);
+        console.log(filas);
+        console.log(filaa);
         return(
             <Formulario><Primero>Value: {fila.nombre}</Primero><Segundo>Value: {fila.dni}</Segundo></Formulario>
         );
+        */
+       dnis.push(dni);
+       console.log(dnis);
+
+       nombres.push(nombre);
+            console.log(nombres);
 
     
     }
@@ -36,6 +50,12 @@ const Tabla = () =>{
             <Primero>Nombre</Primero>
             <Segundo>DNI</Segundo>
             <Eliminar>Eliminar</Eliminar>
+           {nombres.map((item, index) => (
+                <Primero  key={index}>{item}</Primero>
+            ))}
+            {dnis.map((item, index) => (
+                <Segundo  key={index}>{item}</Segundo>
+            ))}
         </Formulario>
 
         </>
