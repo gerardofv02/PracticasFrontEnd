@@ -38,7 +38,7 @@ const Tabla = () =>{
 
     
     return (
-        <>
+        <div >
         
            Introduce nombre : <input type="string" onChange={(e) => setNombre(e.target.value)}/> <br/>
            Introduce DNI : <input type="string" onChange={(e) => setDni(e.target.value)}/> <br/>
@@ -58,7 +58,7 @@ const Tabla = () =>{
             ))}
         </Formulario>
 
-        </>
+        </div>
     
 
 
