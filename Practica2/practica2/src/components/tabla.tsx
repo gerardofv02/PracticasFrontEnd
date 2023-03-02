@@ -1,10 +1,14 @@
 import {  Formulario, Arriba, Abajo } from "@/styles/styledComponents";
 import { useState } from "react";
+import Image from 'next/image';
 type fila = {
     nombre: string,
     dni: string,
 }
-
+let probe = /^[0-9]{8}[A-Z]$/;
+type InputProps = {
+    error?: string
+}
 const Tabla = () =>{
     const[nombre , setNombre] = useState<string>("")
     const[dni, setDni] = useState<string>("")
@@ -13,6 +17,7 @@ const Tabla = () =>{
     
 
     function addComponent(){
+        if(probe.test(dni)){
         setFila([...filaa,{
             nombre:nombre,
             dni:dni,
@@ -20,6 +25,10 @@ const Tabla = () =>{
         setNombre("");
         setDni("");
         console.log(filaa);
+    }
+    else{
+        window.alert("Dni in correcta forma");
+    }
                 
 
     
@@ -52,7 +61,7 @@ const Tabla = () =>{
                     <>
                     <Abajo>{element.nombre}</Abajo>
                     <Abajo>{element.dni}</Abajo>
-                    <button onClick={ () => eliminar(index)}>Eliminar</button>
+                    <button onClick={ () => eliminar(index)}><Image src="/papelera.webp"  alt="una foto" width="100" height="100"/></button>
                     </>
                     )
                 })}
