@@ -1,8 +1,57 @@
+import { Eliminar, Formulario, Primero, Segundo } from "@/styles/styledComponents";
 import { useState } from "react";
-import styled from "styled-components";
-import { Container, Row, Col } from "react-grid-system";
 
 const Tabla = () =>{
+    const[nombre , setNombre] = useState<string>("")
+    const[dni, setDni] = useState<string>("")
+    type fila = {
+        nombre: string,
+        dni: string,
+    };
+    function addComponent(){
+        let fila : fila;
+        fila = {
+            nombre : nombre,
+            dni : dni
+        }
+        console.log(fila);
+        return(
+            <Formulario><Primero>Value: {fila.nombre}</Primero><Segundo>Value: {fila.dni}</Segundo></Formulario>
+        );
+
+    
+    }
+
+    
+    return (
+        <>
+        
+           Introduce nombre : <input type="string" onChange={(e) => setNombre(e.target.value)}/> <br/>
+           Introduce DNI : <input type="string" onChange={(e) => setDni(e.target.value)}/> <br/>
+           <button onClick={addComponent}>Añadir</button> <br/>
+
+
+        
+        <Formulario>
+            <Primero>Nombre</Primero>
+            <Segundo>DNI</Segundo>
+            <Eliminar>Eliminar</Eliminar>
+        </Formulario>
+
+        </>
+    
+
+
+
+    )
+
+
+
+
+
+
+/*
+    
     return(
 <>  
 <form>
@@ -29,6 +78,7 @@ const Tabla = () =>{
         
 </>
     )
+    */
 };
 
 export default Tabla; 
