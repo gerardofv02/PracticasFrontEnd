@@ -1,12 +1,12 @@
 var page = 1;
-var name="";
+var nameC="";
 
 
 function fetchCharsp(page) {
 
 
 
-    fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
+    fetch(`https://rickandmortyapi.com/api/character/?page=${page}&name=${nameC}`)
     .then(data => data.json())
     .then(chars => {
         var container = document.getElementById("results");
@@ -37,8 +37,8 @@ function fetchCharsp(page) {
 function fetchCharsn(name) {
 
 
-
-    fetch(`https://rickandmortyapi.com/api/character/?name=${name}`)
+    page = 1;
+    fetch(`https://rickandmortyapi.com/api/character/?name=${name}&page=${page}`)
     .then(data => data.json())
     .then(chars => {
         var container = document.getElementById("results");

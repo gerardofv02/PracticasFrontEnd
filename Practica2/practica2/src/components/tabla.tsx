@@ -56,15 +56,14 @@ const Tabla = () =>{
             <Arriba>DNI</Arriba>
             <Arriba>Eliminar</Arriba>
             
-                {filaa.map((element,index) => {
-                    return(
+                {filaa.map((element,index) => (
                     <>
                     <Abajo>{element.nombre}</Abajo>
                     <Abajo>{element.dni}</Abajo>
-                    <button onClick={ () => eliminar(index)}><Image src="/papelera.webp"  alt="una foto" width="100" height="100"/></button>
+                    <button onClick={ () => eliminar(index)}><Image src="/papelera.webp"  alt="una foto" width="40" height="40"/></button>
                     </>
                     )
-                })}
+                )}
                 
         </Formulario>
 
