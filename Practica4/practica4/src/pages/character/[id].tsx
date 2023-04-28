@@ -3,6 +3,7 @@ import { gql } from "@apollo/client";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 type Props = {
     character:{
@@ -16,7 +17,8 @@ type Props = {
     episode: {
       id: string,
       name: string
-    }[]
+    }[],
+    image: string
 
 
     }
@@ -99,8 +101,8 @@ export const getStaticProps : GetStaticProps= async (context) => {
 const Character: NextPage<Props> =(props) => {
     return <div>
       <Link href="/characters">Ir de vuelta a personajes</Link>
-        <div>Character id: {props.character.id}</div>
         <div>Character name: {props.character.name}</div>
+        <Image alt="una foto" width="80" height="80" src={props.character.image}/>
         <div >Character location: <Link href={`/location/${props.character.location.id}`}>{props.character.location.name}</Link></div>
         <div>Character gender: {props.character.gender}</div>
         <div>Character episodes: {props.character.episode.map((episode) => {return <><br/><Link href={`/episode/${episode.id}`}>{episode.name}</Link> </>})}</div>

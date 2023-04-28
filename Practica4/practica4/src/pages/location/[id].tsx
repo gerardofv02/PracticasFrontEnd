@@ -58,7 +58,6 @@ export const getServerSideProps:GetServerSideProps = async (context) => {
 
 const Page : NextPage<location>=(props) => {
     return <div>
-        <div>Location id: {props.location.id}</div>
         <div>Location name: {props.location.name}</div>
         <div>Location dimension: {props.location.dimension}</div>
         <div>Location residents: {props.location.residents.map(resident => {return <> <br/><Link href={`/character/${resident.id}`}>{resident.name}</Link></>})}</div>

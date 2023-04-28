@@ -52,7 +52,6 @@ const Episode: FC<{id: string}>= ({id}) => {
   if(error) return <div>Error</div>
   return(
     <div>
-       <div>Episodio id: {data!.episode.id}</div>
        <div>Episodio name: {data!.episode.name}</div>
        <div>Episodio created: {data!.episode.created}</div>
        <div>Episodio characters: {data!.episode.characters.map((character : characterprops) => {return <><br/><Link href={`/character/${character.id}`}>{character.name}</Link></>})}</div>
