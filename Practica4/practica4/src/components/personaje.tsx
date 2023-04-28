@@ -49,14 +49,29 @@ const Character = () => {
       })
   }, [buscar])
 
-
   if(loading) return <div>Loading...</div>
   if(error) return <div>Error</div>
   return(
     <>
             <input type="text" onChange={(e) =>setBuscar(e.target.value)}></input>
-       <button onClick={() => setPage(page+1)}> Pag Siguiente</button>
-      <button onClick={() => setPage(page-1)}> Pag Anterior</button>
+       <button onClick={() => {
+                              if(page >=42){
+                                  window.alert("No hay mas pags");
+                                  page--;
+                              }else {
+                                setPage(page+1)
+                                }
+                              }
+                        }> Pag Siguiente</button>
+      <button onClick={() => {
+                              if(page <= 1){
+                              window.alert("No hay menos pags");
+                              }
+                              else{
+                                  setPage(page-1)
+                                  }
+                            }
+                      }> Pag Anterior</button>
     <Caracteres>
        {data!.characters.results.map((character : characterprops) => {return <Caracter> 
         <Link href={`/character/${character.id}`}>{character.name}</Link>
@@ -69,3 +84,5 @@ const Character = () => {
 }
 
 export default Character;
+
+
