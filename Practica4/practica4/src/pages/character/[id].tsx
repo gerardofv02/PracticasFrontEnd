@@ -3,6 +3,7 @@ import { gql } from "@apollo/client";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
+
 type Props = {
     character:{
     id: number,
@@ -21,6 +22,7 @@ type Props = {
     }
 }
 
+
 export const getStaticPaths : GetStaticPaths= async () => {
     const client = getClient();
     const {data}  = await client.query({
@@ -30,11 +32,31 @@ export const getStaticPaths : GetStaticPaths= async () => {
               results {
                 id
               }
+              info{
+                count,
+                pages,
+                next,
+                prev
+              }
             }
           }
         `,
       });
-      const paths = data.characters.results.map((character: any) => {return {params : {id: character.id}}})
+      const page = 1;
+      console.log(data);
+      console.log(data.characters.info.count);
+      const paths =  [];
+
+        for(let i = 1; i <= parseInt(data.characters.info.count);i++){
+          paths.push(
+            {params: {
+              id: i.toString(),
+            }}
+          )
+        }  
+
+
+      console.log("paths: ",paths);
     return{
         paths : paths,
         fallback: false,
@@ -76,6 +98,7 @@ export const getStaticProps : GetStaticProps= async (context) => {
 
 const Character: NextPage<Props> =(props) => {
     return <div>
+      <Link href="/characters">Ir de vuelta a personajes</Link>
         <div>Character id: {props.character.id}</div>
         <div>Character name: {props.character.name}</div>
         <div >Character location: <Link href={`/location/${props.character.location.id}`}>{props.character.location.name}</Link></div>
